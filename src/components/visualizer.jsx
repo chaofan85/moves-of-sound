@@ -20,14 +20,14 @@ class Visualizer extends Component {
     ctx.strokeStyle = "#003300";
     ctx.stroke();
 
-    let bars = 150;
+    let bars = 200;
 
     for (let i = 0; i < bars; i++) {
       console.log(xStart, xEnd, yStart, yEnd);
       
       let radian = (Math.PI * 2) / bars;
-      let barHeight = 100;
-      let barWidth = 1;
+      let barHeight = 150;
+      let barWidth = 0.5;
       let xStart = centerX + Math.cos(radian * i) * radius;
       let yStart = centerY + Math.sin(radian * i) * radius;
       let xEnd = centerX + Math.cos(radian * i) * (radius + barHeight);
@@ -36,8 +36,8 @@ class Visualizer extends Component {
       ctx.strokeStyle = "purple";
       ctx.lineWidth = barWidth;
       ctx.beginPath();
-      ctx.moveTo(xStart, xEnd);
-      ctx.lineTo(yStart, yEnd);
+      ctx.moveTo(xStart, yStart);
+      ctx.lineTo(xEnd, yEnd);
       ctx.stroke();
     }
   }
@@ -49,7 +49,7 @@ class Visualizer extends Component {
   render() {
     return (
       <div>
-        <canvas className="visualizer" width={400} height={400}>
+        <canvas className="visualizer" width={500} height={500}>
           ha
         </canvas>
       </div>
