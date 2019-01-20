@@ -10,9 +10,15 @@ class Visualizer extends Component {
   componentDidMount() {
     let obj = document.querySelector(".visualizer");
     let ctx = obj.getContext("2d");
-    var centerX = obj.width / 2;
-    var centerY = obj.height / 2;
-    var radius = 70;
+    let centerX = obj.width / 2;
+    let centerY = obj.height / 2;
+    let radius = 70;
+
+    // var gradient = ctx.createLinearGradient(0, 0, 0, obj.height);
+    // gradient.addColorStop(0, "rgba(49, 121, 237, 1)");
+    // gradient.addColorStop(1, "rgba(174, 216, 47, 1)");
+    // ctx.fillStyle = gradient;
+    // ctx.fillRect(0, 0, obj.width, obj.height);
 
     ctx.beginPath();
     ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
@@ -20,25 +26,32 @@ class Visualizer extends Component {
     ctx.strokeStyle = "#003300";
     ctx.stroke();
 
-    let bars = 200;
+    let bars = 100;
+    let radian = (Math.PI * 2) / bars;
+    let barHeight = 150;
+    let barWidth = 2;
+    
 
     for (let i = 0; i < bars; i++) {
-      console.log(xStart, xEnd, yStart, yEnd);
       
-      let radian = (Math.PI * 2) / bars;
-      let barHeight = 150;
-      let barWidth = 0.5;
+      
+      
       let xStart = centerX + Math.cos(radian * i) * radius;
       let yStart = centerY + Math.sin(radian * i) * radius;
       let xEnd = centerX + Math.cos(radian * i) * (radius + barHeight);
       let yEnd = centerY + Math.sin(radian * i) * (radius + barHeight);
 
-      ctx.strokeStyle = "purple";
+      let gradient = ctx.createLinearGradient(xStart, yStart, xEnd, yEnd);
+      gradient.addColorStop(0, "rgba(42, 54, 186, 1)");
+      gradient.addColorStop(1, "rgba(209, 28, 18, 1)");
+
+      ctx.strokeStyle = gradient;
       ctx.lineWidth = barWidth;
       ctx.beginPath();
       ctx.moveTo(xStart, yStart);
       ctx.lineTo(xEnd, yEnd);
       ctx.stroke();
+
     }
   }
 
