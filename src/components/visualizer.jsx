@@ -30,12 +30,8 @@ class Visualizer extends Component {
     let radian = (Math.PI * 2) / bars;
     let barHeight = 150;
     let barWidth = 2;
-    
 
     for (let i = 0; i < bars; i++) {
-      
-      
-      
       let xStart = centerX + Math.cos(radian * i) * radius;
       let yStart = centerY + Math.sin(radian * i) * radius;
       let xEnd = centerX + Math.cos(radian * i) * (radius + barHeight);
@@ -51,13 +47,8 @@ class Visualizer extends Component {
       ctx.moveTo(xStart, yStart);
       ctx.lineTo(xEnd, yEnd);
       ctx.stroke();
-
     }
   }
-
-  // drawBar(x1, x2, y1, y2, width) {
-    
-  // }
 
   render() {
     return (
