@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 
-class Visualizer extends Component {
+class Player extends Component {
   render() {
     return <div />;
   }
 }
+
+export default Player;
